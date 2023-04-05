@@ -12,7 +12,7 @@ def generate_response(user_input, chat_history):
     completions = openai.Completion.create(
         engine = "text-davinci-003",
         prompt = prompt,
-        max_tokens = 1024,
+        max_tokens = 3500,
         n = 1,
         stop = None,
         temperature = 0.7,
@@ -28,7 +28,7 @@ def get_text():
     input_text = st.text_input("You: ","", key="input")
     return input_text
 
-st.title("ChatGPT - Davinci Model")
+st.title("KarshGPT")
 
 # Create a session state object to store chat history
 if 'history' not in st.session_state:
