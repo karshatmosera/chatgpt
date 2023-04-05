@@ -25,7 +25,7 @@ def generate_response(user_input, chat_history):
         return None
 
 def get_text():
-    input_text = st.text_input("You: ","Hello, how are you?", key="input")
+    input_text = st.text_input("You: ","", key="input")
     return input_text
 
 st.title("ChatGPT - Davinci Model")
