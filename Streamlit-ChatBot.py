@@ -1,27 +1,41 @@
 import openai
 import streamlit as st
 from streamlit_chat import message
+import os
+import requests
+import json
 
-openai.api_key = "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"
+openai.api_key = "9685998b101f449ab07c3e6b19b9050e"
+openai.api_base =  "https://karshgpt-scus.openai.azure.com/"
+openai.api_type = 'azure'
+openai.api_version = '2022-12-01' # this may change in the future
+
+deployment_name='Karsh-Curie-Test'
 
 @st.cache_data()
 def generate_response(user_input, chat_history):
-    prompt = f"{user_input}\n"
-    for i in range(len(chat_history)):
-        prompt += f"{chat_history[i]['user']}\n{chat_history[i]['bot']}\n"
-    completions = openai.Completion.create(
-        engine = "text-davinci-003",
-        prompt = prompt,
-        max_tokens = 3500,
-        n = 1,
-        stop = None,
-        temperature = 0.7,
-    )
+    try:
+        prompt = f"{user_input}\n"
+        for i in range(max(0, len(chat_history) - 5), len(chat_history)):
+            prompt += f"{chat_history[i]['user']}\n{chat_history[i]['bot']}\n"
 
-    if completions.choices:
-        message = completions.choices[0].text
-        return message
-    else:
+        completions = openai.Completion.create(
+            engine = deployment_name,
+            prompt = prompt,
+            max_tokens = 100,
+            n = 1,
+            stop = None,
+            temperature = 0.1,
+            top_p = 0.3
+        )
+
+        if completions.choices:
+            message = completions.choices[0].text
+            return message.strip()
+        else:
+            return None
+    except Exception as e:
+        st.error("Error generating response: " + str(e))
         return None
 
 def get_text():
