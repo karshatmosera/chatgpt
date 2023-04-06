@@ -5,33 +5,40 @@ import os
 import requests
 import json
 
-openai.api_key = "9685998b101f449ab07c3e6b19b9050e"
-openai.api_base =  "https://karshgpt-scus.openai.azure.com/"
+#openai.api_key = "9685998b101f449ab07c3e6b19b9050e"
+#openai.api_base =  "https://karshgpt-scus.openai.azure.com/"
+openai.api_key = "3407e223a40a4b95b91d60e31f1f16f9"
+openai.api_base = "https://karshgpt.openai.azure.com/"
 openai.api_type = 'azure'
 openai.api_version = '2022-12-01' # this may change in the future
 
-deployment_name='Karsh-Curie-Test'
+deployment_name='Karsh-Ada-Test'
 
-@st.cache_data()
+@st.cache_data
 def generate_response(user_input, chat_history):
     try:
+        # Construct the prompt
         prompt = f"{user_input}\n"
-        for i in range(max(0, len(chat_history) - 5), len(chat_history)):
-            prompt += f"{chat_history[i]['user']}\n{chat_history[i]['bot']}\n"
-
+        num_history = len(chat_history)
+        if num_history > 0:
+            # Add context from chat history, excluding the latest bot response
+            for i in range(max(0, num_history - 2), num_history):
+                if chat_history[i]['bot']:
+                    prompt += f"{chat_history[i]['user']}\n"
+                prompt += f"{chat_history[i]['bot']}\n"
+        # Generate the completion with top_p sampling
         completions = openai.Completion.create(
             engine = deployment_name,
             prompt = prompt,
             max_tokens = 100,
             n = 1,
             stop = None,
-            temperature = 0.1,
-            top_p = 0.3
+            temperature = 0.5,
+            top_p = 0.9
         )
-
         if completions.choices:
-            message = completions.choices[0].text
-            return message.strip()
+            message = completions.choices[0].text.strip()
+            return message
         else:
             return None
     except Exception as e:
