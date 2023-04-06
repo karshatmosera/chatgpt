@@ -1,0 +1,4 @@
+{"prompt": "Testing this prompt", "completion": "You have successfully performed this test"}
+{"prompt": "When I go to the store, I want an", "completion": "apple"}
+{"prompt": "When I go to work, I want a", "completion": "coffee"}
+{"prompt": "When I go home, I want a", "completion": "soda"}
