@@ -11,7 +11,7 @@ openai.api_type = 'azure'
 openai.api_version = '2022-12-01' # this may change in the future
 
 deployment_name='Karsh-Ada-Test'
-
+#test
 @st.cache_data
 def generate_response(user_input, chat_history):
     try:
