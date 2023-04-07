@@ -12,6 +12,7 @@ openai.api_base = "https://karshgpt.openai.azure.com/"
 openai.api_type = 'azure'
 openai.api_version = '2022-12-01' # this may change in the future
 
+#deployment_name ="Karsh-Curie-Test"
 deployment_name='Karsh-Ada-Test'
 
 @st.cache_data
