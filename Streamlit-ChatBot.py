@@ -5,14 +5,11 @@ import os
 import requests
 import json
 
-#openai.api_key = "9685998b101f449ab07c3e6b19b9050e"
-#openai.api_base =  "https://karshgpt-scus.openai.azure.com/"
 openai.api_key = "3407e223a40a4b95b91d60e31f1f16f9"
 openai.api_base = "https://karshgpt.openai.azure.com/"
 openai.api_type = 'azure'
 openai.api_version = '2022-12-01' # this may change in the future
 
-#deployment_name ="Karsh-Curie-Test"
 deployment_name='Karsh-Ada-Test'
 
 @st.cache_data
