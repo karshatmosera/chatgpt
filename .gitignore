@@ -1,2 +1,2 @@
-#Exclude
+# exclude secrets file
 secrets.toml
