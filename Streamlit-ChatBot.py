@@ -17,7 +17,7 @@ openai.api_base = openai_api_base
 openai.api_type = openai_api_type
 openai.api_version = openai_api_version
 
-deployment_name='Karsh-Ada-Test'
+deployment_name='Karsh-Ada-Test' #Change this to engine required for region
 
 @st.cache_data
 def generate_response(user_input, chat_history):
