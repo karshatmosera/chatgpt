@@ -5,10 +5,16 @@ import os
 import requests
 import json
 
-openai.api_key = "3407e223a40a4b95b91d60e31f1f16f9"
-openai.api_base = "https://karshgpt.openai.azure.com/"
-openai.api_type = 'azure'
-openai.api_version = '2022-12-01' # this may change in the future
+secrets = toml.load('secrets.toml')
+openai_api_key = secrets['openai']['api_key']
+openai_api_base = secrets['openai']['api_base']
+openai_api_type = secrets['openai']['api_type']
+openai_api_version = secrets['openai']['api_version']
+
+openai.api_key = openai_api_key
+openai.api_base = openai_api_base
+openai.api_type = openai_api_type
+openai.api_version = openai_api_version
 
 deployment_name = 'Karsh-Ada-Test'
 
