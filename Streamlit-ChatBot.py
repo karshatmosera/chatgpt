@@ -17,7 +17,6 @@ openai.api_base = openai_api_base
 openai.api_type = openai_api_type
 openai.api_version = openai_api_version
 
-#deployment_name ="Karsh-Curie-Test"
 deployment_name='Karsh-Ada-Test'
 
 @st.cache_data
