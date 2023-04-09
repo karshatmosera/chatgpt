@@ -1,6 +1,10 @@
 import os
 import openai
-openai.api_key = "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"
+import toml
+
+secrets = toml.load('secrets.toml')
+openai_api_key = secrets['chatgpt']['api_key']
+openai.api_key = openai_api_key
 
 messages = [
  {"role": "system", "content" : ""}
