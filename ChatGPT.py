@@ -2,7 +2,10 @@ import os
 import openai
 import toml
 
-secrets = toml.load('secrets.toml')
+
+secrets_file = os.path.join(os.path.dirname(__file__), 'secrets.toml')
+secrets = toml.load(secrets_file)
+
 openai_api_key = secrets['chatgpt']['api_key']
 openai.api_key = openai_api_key
 
