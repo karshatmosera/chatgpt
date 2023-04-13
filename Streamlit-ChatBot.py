@@ -7,17 +7,17 @@ import json
 import toml
 
 secrets = toml.load('secrets.toml')
-openai_api_key = secrets['openai']['api_key']
-openai_api_base = secrets['openai']['api_base']
-openai_api_type = secrets['openai']['api_type']
-openai_api_version = secrets['openai']['api_version']
+openai_api_key = secrets['chatgpt']['api_key']
+#openai_api_base = secrets['openai']['api_base']
+#openai_api_type = secrets['openai']['api_type']
+#openai_api_version = secrets['openai']['api_version']
 
 openai.api_key = openai_api_key
-openai.api_base = openai_api_base
-openai.api_type = openai_api_type
-openai.api_version = openai_api_version
+#openai.api_base = openai_api_base
+#openai.api_type = openai_api_type
+#openai.api_version = openai_api_version
 
-deployment_name='Karsh-Ada-Test' #Change this to engine required for region
+deployment_name='text-davinci-003' #Change this to engine required for region
 
 @st.cache_data
 def generate_response(user_input, chat_history):
